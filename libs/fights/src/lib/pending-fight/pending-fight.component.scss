@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  place-content: space-between;
+}
+
+.matchup, .time {
+  text-align: center;
+}
+
+.staging {
+  width: 234px;
+}

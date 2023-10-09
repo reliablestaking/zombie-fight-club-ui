@@ -1,0 +1,61 @@
+<img alt="fight builder" src="assets/FIGHT-BUILDER-TEXT.png" class="header" />
+
+<nav>
+  <mat-button-toggle-group
+    name="owned"
+    [(ngModel)]="owned"
+    (change)="emitOptions()"
+    aria-label="toggle owned NFTs"
+    style="align-self: center"
+  >
+    <mat-button-toggle [value]="true">My NFTs</mat-button-toggle>
+    <mat-button-toggle [value]="false">Promoted NFTs</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <section class="search" *ngIf="!owned">
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <mat-icon matPrefix color="primary">search</mat-icon>
+      <input matInput name="name" [(ngModel)]="name" />
+      <button type="button" matSuffix mat-icon-button (click)="clearSearch()">
+        <mat-icon color="primary">clear</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-flat-button (click)="emitOptions()" color="primary">
+      Search
+    </button>
+  </section>
+  <a mat-raised-button [routerLink]="['/']" color="primary" class="back-button"
+    >Back</a
+  >
+</nav>
+
+<section *ngIf="!nfts.length" class="no-data">
+  We could not find any NFTs, please refine your search criteria.
+</section>
+
+<mat-grid-list
+  [cols]="columns$ | async"
+  rowHeight="264px"
+  [gutterSize]="(gutter$ | async)!"
+>
+  <mat-grid-tile *ngFor="let nft of nfts">
+    <div class="tile">
+      <mat-grid-tile-header
+        ><h3 *ngIf="!nft.userOwns">{{ nft.name }}</h3>
+        <h3 *ngIf="nft.userOwns">{{ nft.name }} (Owned)</h3>
+      </mat-grid-tile-header>
+      <h4>Wins/Losses: {{ nft.wins }}-{{ nft.loses }}</h4>
+      <img [zfcUiNftImage]="nft" [aspectRatio]="128" />
+      <mat-grid-tile-footer>
+        <input
+          type="image"
+          name="pick"
+          src="assets/BUTTON-PICK.png"
+          (click)="selected.emit(nft)"
+        />
+      </mat-grid-tile-footer>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

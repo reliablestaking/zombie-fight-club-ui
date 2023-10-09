@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  margin: 32px;
+}
+
+.buttons {
+  align-self: center;
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+}
+
+.mat-expansion-panel-header-title {
+  font-weight: 600;
+}
+
+.mat-expansion-panel-header-title, .mat-expansion-panel {
+  color: var(--text-color);
+}

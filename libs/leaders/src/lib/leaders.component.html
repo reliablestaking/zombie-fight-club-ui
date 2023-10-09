@@ -1,0 +1,52 @@
+<div class="wrapper" *ngIf="store.vm$ | async as vm">
+  <mat-progress-bar
+    *ngIf="vm.isLoading"
+    color="primary"
+    mode="indeterminate"
+  ></mat-progress-bar>
+
+  <a mat-raised-button [routerLink]="['/']" color="primary" class="back-button"
+    >Back</a
+  >
+
+  <section>
+    <ng-container
+      *ngTemplateOutlet="
+        itemsTemplate;
+        context: { items: vm.leaderBoard?.mostWins, title: 'Most Wins' }
+      "
+    ></ng-container>
+    <ng-container
+      *ngTemplateOutlet="
+        itemsTemplate;
+        context: { items: vm.leaderBoard?.mostLoses, title: 'Most Losses' }
+      "
+    ></ng-container>
+    <ng-container
+      *ngTemplateOutlet="
+        itemsTemplate;
+        context: {
+          items: vm.leaderBoard?.bestPercent,
+          title: 'Best Winning Percentage'
+        }
+      "
+    ></ng-container>
+  </section>
+</div>
+
+<ng-template #itemsTemplate let-items="items" let-title="title">
+  <div class="board">
+    <h2>{{ title }}</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let item of items; let i = index">
+        <img matListAvatar [src]="sanitize(item.image)" class="avatar" />
+        <h3 *ngIf="!item.userOwns" matLine>#{{ i + 1 }} {{ item.name }}</h3>
+        <h3 *ngIf="item.userOwns" matLine>
+          #{{ i + 1 }} {{ item.name }} (Owned)
+        </h3>
+        <h4 matLine>{{ item.type }}</h4>
+        <h4 matLine>Wins/Losses: {{ item.wins }}-{{ item.loses }}</h4>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</ng-template>

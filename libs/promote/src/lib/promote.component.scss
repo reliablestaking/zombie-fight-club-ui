@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.table {
+  width: calc(100% - 64px);
+  margin: 0 32px;
+}
+
+.mat-column-name {
+  width: 300px;
+}
+
+.mat-column-image {
+  width: 300px;
+  padding: 12px;
+  img {
+    height: 96px;
+    width: 96px;
+  }
+}
+
+.mat-column-type {
+  width: 132px;
+}
+
+.mat-column-actions {
+  width: 32px;
+  justify-content: center;
+  border-left: 1px solid currentColor;
+  padding-left: 12px;
+}
+
+.back-button {
+  align-self: flex-end;
+  margin-right: 32px;
+}
+
+.promote {
+  min-height: 75px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  place-content: center;
+  gap: 24px;
+  background-image: url('/assets/Top-Bar.png');
+
+  h2 {
+    margin-bottom: 0;
+  }
+}

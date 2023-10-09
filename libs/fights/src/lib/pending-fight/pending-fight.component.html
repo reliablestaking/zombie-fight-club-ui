@@ -1,0 +1,28 @@
+<img
+  alt="staging fight"
+  src="assets/Fight_Placeholder-low-res.jpg"
+  class="staging"
+/>
+
+<ng-container *ngIf="fight.minutesUntilExpired; else expired">
+  <div class="cost">
+    <h4>Cost ₳</h4>
+    <zfc-ui-copy-input [value]="fight.paymentAmountAda!"></zfc-ui-copy-input>
+  </div>
+
+  <div class="payment-address">
+    <h4>Payment Address</h4>
+    <zfc-ui-copy-input [value]="fight.paymentAddress!"></zfc-ui-copy-input>
+  </div>
+
+  <div class="time">
+    <h4>Remaining Time</h4>
+    <countdown
+      [config]="{ leftTime: fight.minutesUntilExpired * 60 }"
+    ></countdown>
+  </div>
+</ng-container>
+
+<ng-template #expired>
+  <span>Time expired!</span>
+</ng-template>

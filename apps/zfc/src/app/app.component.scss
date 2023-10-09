@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  place-content: space-between;
+  align-items: flex-end;
+  padding: 0 16px;
+
+  img.button {
+    height: 48px;
+  }
+
+  img.banner {
+    height: 96px;
+  }
+
+  .empty {
+    width: 141px;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  place-content: center;
+  min-height: 36px;
+  background-image: url('/assets/Top-Bar.png');
+}

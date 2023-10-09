@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  place-content: space-between;
+}
+
+.nft-image {
+  width: unset !important;
+  height: 132px !important;
+}
+
+.nft-image.wide {
+  width: 234px !important;
+  height: 132px !important;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

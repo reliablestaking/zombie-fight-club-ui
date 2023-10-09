@@ -1,0 +1,93 @@
+<ng-container *ngrxLet="isAuthenticated$ as isAuthenticated">
+  <img src="assets/Alien-Machinery.png" class="fixed" />
+  <section class="promote">
+    <img alt="promote your fighters" src="assets/Top-Bar-Text.png" />
+    <a color="primary" [routerLink]="['/promote']" *ngIf="isAuthenticated">
+      <img alt="promote" src="assets/PROMOTE-BUTTON.png" />
+    </a>
+  </section>
+
+  <form class="fight-builder" (ngSubmit)="startFight()">
+    <img alt="fight builder" src="assets/FIGHT-BUILDER-TEXT.png" />
+    <div class="pairing">
+      <div *ngrxLet="currentZombie$ as zombie" class="fighter-container">
+        <img
+          *ngIf="zombie"
+          [zfcUiNftImage]="zombie"
+          [aspectRatio]="null"
+          class="fighter"
+        />
+        <img
+          *ngIf="!zombie"
+          alt="choose your zombie"
+          src="/assets/Choose_Your_Zombie-low-res.jpg"
+          class="fighter"
+        />
+        <a [routerLink]="['/zombie']" *ngIf="isAuthenticated">
+          <img alt="pick" src="assets/BUTTON-PICK.png" class="button" />
+        </a>
+      </div>
+      <img
+        style="align-self: center"
+        alt="versus"
+        src="assets/vs.png"
+        class="versus"
+      />
+      <div *ngrxLet="currentHunter$ as hunter" class="fighter-container">
+        <img
+          *ngIf="hunter"
+          [zfcUiNftImage]="hunter"
+          [aspectRatio]="null"
+          class="fighter"
+        />
+        <img
+          *ngIf="!hunter"
+          alt="choose your hunter"
+          src="/assets/Choose_Your_Hunter-low-res.jpg"
+          class="fighter"
+        />
+        <a [routerLink]="['/hunter']" *ngIf="isAuthenticated">
+          <img alt="pick" src="assets/BUTTON-PICK.png" class="button" />
+        </a>
+      </div>
+    </div>
+    <ng-container *ngrxLet="saving$ as saving">
+      <input
+        type="image"
+        name="fight"
+        class="fight"
+        *ngIf="isAuthenticated && !saving"
+        [disabled]="fightInvalid$ | async"
+        [matTooltip]="
+          (fightInvalid$ | async) ? 'Select a zombie and hunter to fight' : ''
+        "
+        src="assets/FIGHT-BUTTON.png"
+      />
+      <mat-progress-spinner
+        *ngIf="saving"
+        mode="indeterminate"
+        diameter="32"
+        color="primary"
+      ></mat-progress-spinner>
+    </ng-container>
+  </form>
+
+  <section class="fights" *ngIf="isAuthenticated">
+    <ng-container *ngrxLet="fightsVm$ as vm">
+      <zfc-ui-fights-list
+        *ngIf="vm.fights.length"
+        [fights]="vm.fights"
+      ></zfc-ui-fights-list>
+      <mat-progress-bar
+        *ngIf="vm.loading"
+        mode="indeterminate"
+      ></mat-progress-bar>
+    </ng-container>
+  </section>
+
+  <section class="login" *ngIf="!isAuthenticated">
+    <a href="#" (click)="login()">
+      <img alt="login" src="assets/LOGIN-BUTTON.png" class="button" />
+    </a>
+  </section>
+</ng-container>

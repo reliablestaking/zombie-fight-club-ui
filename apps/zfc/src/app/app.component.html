@@ -1,0 +1,33 @@
+<header>
+  <div class="links">
+    <a [routerLink]="['/faq']">
+      <img alt="FAQ" src="assets/FAQ-BUTTON.png" class="button" />
+    </a>
+    <a [routerLink]="['/leaders']">
+      <img alt="Leaders" src="assets/LEADERS.png" class="button" />
+    </a>
+  </div>
+  <a [routerLink]="['/']">
+    <img
+      alt="zombie fight club"
+      src="assets/ZFC Banner transparent.png"
+      class="banner"
+    />
+  </a>
+  <div class="links">
+    <a [routerLink]="['/tutorial']">
+      <img alt="tutorial" src="assets/TUTORIAL.png" class="button" />
+    </a>
+    <a href="#" (click)="login()" *ngIf="isAnonymous$ | async; else empty">
+      <img alt="login" src="assets/LOGIN-BUTTON.png" class="button" />
+    </a>
+  </div>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>© 2022 Zombie Chains</footer>
+
+<ng-template #empty>
+  <span class="empty">&nbsp;</span>
+</ng-template>

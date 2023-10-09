@@ -1,0 +1,15 @@
+<h2 mat-dialog-header>List NFT</h2>
+<form #form="ngForm" (ngSubmit)="list()">
+  <section mat-dialog-content class="content">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput required disabled name="name" [(ngModel)]="nft.name" />
+    </mat-form-field>
+  </section>
+  <section mat-dialog-actions align="end">
+    <button type="button" color="primary" mat-raised-button mat-dialog-close>
+      Cancel
+    </button>
+    <button type="submit" color="primary" mat-raised-button>List</button>
+  </section>
+</form>

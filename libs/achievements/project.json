@@ -1,0 +1,17 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/achievements/src",
+  "prefix": "zfc-ui",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/achievements/**/*.ts",
+          "libs/achievements/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

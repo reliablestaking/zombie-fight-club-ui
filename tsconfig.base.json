@@ -1,0 +1,33 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@zfc-ui/achievements": ["libs/achievements/src/index.ts"],
+      "@zfc-ui/auth": ["libs/auth/src/index.ts"],
+      "@zfc-ui/faq": ["libs/faq/src/index.ts"],
+      "@zfc-ui/fight-state": ["libs/fight-state/src/index.ts"],
+      "@zfc-ui/fights": ["libs/fights/src/index.ts"],
+      "@zfc-ui/home": ["libs/home/src/index.ts"],
+      "@zfc-ui/hunter": ["libs/hunter/src/index.ts"],
+      "@zfc-ui/leaders": ["libs/leaders/src/index.ts"],
+      "@zfc-ui/promote": ["libs/promote/src/index.ts"],
+      "@zfc-ui/shared": ["libs/shared/src/index.ts"],
+      "@zfc-ui/tutorial": ["libs/tutorial/src/index.ts"],
+      "@zfc-ui/zombie": ["libs/zombie/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

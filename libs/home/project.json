@@ -1,0 +1,14 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/home/src",
+  "prefix": "zfc-ui",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/home/**/*.ts", "libs/home/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

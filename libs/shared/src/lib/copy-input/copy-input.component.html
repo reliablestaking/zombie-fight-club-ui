@@ -1,0 +1,13 @@
+<mat-form-field appearance="outline" class="form-input copy-input">
+  <input type="text" matInput [name]="name" [disabled]="true" [value]="value" />
+  <button
+    type="button"
+    mat-icon-button
+    matSuffix
+    aria-label="Copy to clipboard"
+    [cdkCopyToClipboard]="value"
+    (click)="copy()"
+  >
+    <mat-icon>content_copy</mat-icon>
+  </button>
+</mat-form-field>

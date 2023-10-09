@@ -1,0 +1,17 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/fight-state/src",
+  "prefix": "zfc-ui",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/fight-state/**/*.ts",
+          "libs/fight-state/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

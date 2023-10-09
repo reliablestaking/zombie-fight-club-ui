@@ -1,0 +1,24 @@
+<img [zfcUiNftImage]="nftImage!" class="nft-image wide" />
+<p class="results">
+  <span>{{ fight.winner }}</span>
+  <span>defeats</span>
+  <span>{{ fight.loser }}</span>
+</p>
+
+<img [zfcUiNftImage]="alienImage!" class="nft-image" />
+<p>Alien revealed</p>
+
+<div class="vertical">
+  <h4>{{ fight.mintedDate | date: 'medium' }}</h4>
+  <a
+    *ngIf="fight.tweetLink"
+    mat-icon-button
+    color="warn"
+    aria-label="tweet this fight"
+    target="_blank"
+    rel="noopener"
+    [href]="fight.tweetLink"
+  >
+    <mat-icon svgIcon="tweet"></mat-icon>
+  </a>
+</div>

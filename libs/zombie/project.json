@@ -1,0 +1,14 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/zombie/src",
+  "prefix": "zfc-ui",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/zombie/**/*.ts", "libs/zombie/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "achievements": "libs/achievements",
+    "auth": "libs/auth",
+    "faq": "libs/faq",
+    "fight-state": "libs/fight-state",
+    "fights": "libs/fights",
+    "home": "libs/home",
+    "hunter": "libs/hunter",
+    "leaders": "libs/leaders",
+    "promote": "libs/promote",
+    "shared": "libs/shared",
+    "tutorial": "libs/tutorial",
+    "zfc": "apps/zfc",
+    "zombie": "libs/zombie"
+  }
+}

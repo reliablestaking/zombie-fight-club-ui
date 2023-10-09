@@ -1,0 +1,44 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $background: map.get($color-config, background);
+  $foreground: map.get($color-config, foreground);
+  $primary: map.get($color-config, primary);
+  $accent: map.get($color-config, accent);
+
+  footer {
+    color: #95d543;
+    font-weight: 500;
+    a,
+    a:visited,
+    a:active,
+    a:hover {
+      color: #95d543;
+      font-weight: 500;
+    }
+  }
+
+  .toolbar {
+    a,
+    a:visited,
+    a:active,
+    a:hover {
+      color: mat.get-color-from-palette($primary, '500-contrast');
+    }
+  }
+
+  .header-link.active {
+    color: mat.get-color-from-palette($accent, text);
+    border-bottom: 2px solid mat.get-color-from-palette($accent, text);
+    padding-bottom: 4px;
+  }
+}
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  @if $color-config != null {
+    @include color($theme);
+  }
+}

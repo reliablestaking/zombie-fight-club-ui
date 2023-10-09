@@ -1,0 +1,14 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <zfc-ui-pick-layout
+    [nfts]="vm.zombies"
+    (selected)="pick($event)"
+    (optionsChanged)="setOptions($event)"
+  ></zfc-ui-pick-layout>
+
+  <p *ngIf="vm.error">We could not load any zombies!</p>
+  <mat-progress-bar
+    *ngIf="vm.loading"
+    mode="indeterminate"
+    color="primary"
+  ></mat-progress-bar>
+</ng-container>

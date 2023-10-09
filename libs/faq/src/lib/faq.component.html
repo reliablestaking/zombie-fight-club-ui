@@ -1,0 +1,12 @@
+<mat-accordion [multi]="true" class="faq">
+  <mat-expansion-panel *ngFor="let question of questions">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ question.title }}</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p [innerHTML]="question.answer"></p>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div class="buttons">
+  <a mat-raised-button [routerLink]="['/']" color="primary">Back</a>
+</div>

@@ -1,0 +1,159 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+@use './app/app.theme' as app;
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$zfc-ui-primary: mat.define-palette(mat.$light-green-palette, 700);
+$zfc-ui-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$zfc-ui-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$zfc-ui-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $zfc-ui-primary,
+      accent: $zfc-ui-accent,
+      warn: $zfc-ui-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($zfc-ui-theme);
+@include app.theme($zfc-ui-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  //--text-color: #e50801;
+  // Matches green buttons
+  --text-color: #689f38;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-image: url('/assets/ZFC Background.jpg');
+  background-repeat: no-repeat;
+  background-color: black !important;
+  background-position: center;
+}
+
+.mat-button,
+.mat-flat-button,
+.mat-raised-button {
+  text-transform: uppercase;
+  min-width: 100px !important;
+}
+
+.mat-snack-bar-container {
+  background-color: mat.get-color-from-palette($zfc-ui-accent, 500);
+}
+
+a,
+a:visited,
+a:active,
+a:hover {
+  color: mat.get-color-from-palette($zfc-ui-primary, 500);
+}
+
+.copy-input .mat-input-element:disabled {
+  color: var(--text-color);
+}
+
+.add-li-margin:not(:first-of-type) {
+  margin-top: 16px;
+}
+
+.mat-card-header {
+  margin-bottom: 16px;
+  align-items: center;
+
+  .mat-card-avatar {
+    margin-right: 8px;
+  }
+
+  &.with-action {
+    place-content: space-between;
+
+    .mat-card-header-text {
+      flex: 1 1 auto;
+    }
+  }
+
+  .mat-card-title,
+  .mat-card-header-text {
+    margin: 0 !important;
+  }
+}
+
+.mat-card-actions {
+  margin: 0 0 8px !important;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  place-content: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+dt {
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-weight: 600;
+  &::after {
+    content: ':';
+  }
+}
+
+.mat-card-avatar {
+  height: 36px !important;
+  width: 36px !important;
+  font-size: 36px;
+}
+
+.button-with-icon .mat-button-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
+.centered-form {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  gap: 16px;
+  margin-top: 24px;
+
+  button {
+    align-self: center;
+  }
+}

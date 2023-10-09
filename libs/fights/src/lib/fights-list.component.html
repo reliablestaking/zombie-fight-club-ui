@@ -1,0 +1,43 @@
+<img alt="my fights" src="assets/My-Fights.png" />
+<mat-grid-list
+  cols="1"
+  rowHeight="200px"
+  gutterSize="4px"
+  *ngIf="fights?.length; else noFights"
+  class="fight-list"
+>
+  <mat-grid-tile *ngFor="let fight of fights">
+    <div class="fight">
+      <h3>{{ fight | fightStatus }}</h3>
+      <zfc-ui-pending-fight
+        *ngIf="
+          fight.status === FightStatus.AwaitingPayment ||
+          fight.status === FightStatus.Pending
+        "
+        [fight]="fight"
+      >
+      </zfc-ui-pending-fight>
+      <zfc-ui-in-progress-fight
+        *ngIf="fight.status === FightStatus.PaymentReceived"
+        [fight]="fight"
+      >
+      </zfc-ui-in-progress-fight>
+      <zfc-ui-completed-fight
+        *ngIf="fight.status === FightStatus.Minted"
+        [fight]="fight"
+      >
+      </zfc-ui-completed-fight>
+      <zfc-ui-expired-fight
+        *ngIf="fight.status === FightStatus.Expired"
+        [fight]="fight"
+      ></zfc-ui-expired-fight>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #noFights>
+  <p>
+    You do not have any fights yet, choose a zombie and hunter above to start a
+    new fight!
+  </p>
+</ng-template>
